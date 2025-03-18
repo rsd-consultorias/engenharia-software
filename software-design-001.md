@@ -148,3 +148,11 @@ Desvantagens:
  - Latência externa: Problemas no serviço remoto podem impactar o sistema.
  - Complexidade adicional: Uma camada extra para gerenciar.
  - Quando usar: Sistemas com integrações externas frequentes ou complexas.
+
+### Resumo
+
+| Abordagem           | Quando usar                                                 | Complexidade    |
+|---------------------|------------------------------------------------------------|-----------------|
+| Controller Mediator | Apps pequenas ou lógica simples                             | Baixa           |
+| Mediator            | Apps médias/grandes com lógica empresarial complexa         | Moderada        |
+| Ambassador          | Integrações externas frequentes e necessidade de isolamento | Moderada/Alta   |
