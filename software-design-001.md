@@ -156,3 +156,27 @@ Desvantagens:
 | Controller Mediator | Apps pequenas ou lógica simples                             | Baixa           |
 | Mediator            | Apps médias/grandes com lógica empresarial complexa         | Moderada        |
 | Ambassador          | Integrações externas frequentes e necessidade de isolamento | Moderada/Alta   |
+
+
+# Design Patterns - Características Principais
+
+| **Padrão de Design**      | **Descrição**                                                                 | **Características Identificáveis**                                                                                     |
+|----------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Singleton**             | Garante uma única instância global de uma classe.                            | Método estático `GetInstance`, construtor privado, variável estática para instância.                                   |
+| **Factory Method**        | Permite a criação de objetos sem especificar a classe concreta.              | Classe com métodos abstratos/fábrica, subclasse decide qual objeto instanciar.                                        |
+| **Abstract Factory**      | Fornece uma interface para criar famílias de objetos relacionados.           | Métodos para criar objetos de diferentes famílias, implementação consistente entre famílias.                           |
+| **Builder**               | Separa a construção de um objeto complexo da sua representação final.        | Classe separada para construir objetos passo a passo, uso de métodos encadeados (`fluent interface`).                  |
+| **Prototype**             | Cria novos objetos clonando uma instância existente.                         | Implementação de um método `Clone`, reutilização de estados de objetos existentes.                                     |
+| **Adapter**               | Permite que interfaces incompatíveis trabalhem juntas.                       | Classe intermediária que converte uma interface para outra (ex.: `ConvertToXYZ()`).                                    |
+| **Decorator**             | Permite adicionar funcionalidades a objetos dinamicamente.                   | Classe que "envolve" outra classe, implementação da interface original com funcionalidade extra.                       |
+| **Observer**              | Define uma relação "um-para-muitos" entre objetos.                           | Classe `Subject` com lista de observadores, métodos como `Attach`, `Detach` e `Notify`.                                |
+| **Mediator**              | Centraliza a comunicação entre objetos para reduzir interdependências.       | Classe mediadora que gerencia a interação entre componentes, objetos não comunicam diretamente entre si.               |
+| **Strategy**              | Define uma família de algoritmos e os torna intercambiáveis.                 | Interface ou classe base para algoritmos, uso de composição para alternar implementações em tempo de execução.         |
+| **Command**               | Encapsula uma solicitação como um objeto, permitindo desfazer ou enfileirar. | Implementação de uma interface `Command`, métodos como `Execute` e `Undo`.                                            |
+| **Chain of Responsibility** | Permite que múltiplos objetos tenham a chance de processar uma solicitação. | Implementação de métodos `HandleRequest` em cadeia, passando requisições de um objeto para outro até serem resolvidas. |
+| **Composite**             | Trata objetos individuais e composições de objetos de maneira uniforme.      | Classe base comum, estrutura hierárquica com métodos para acessar e manipular componentes (ex.: `Add` e `Remove`).     |
+| **Proxy**                 | Fornece um substituto ou intermediário para controlar o acesso a um objeto.   | Classe com a mesma interface do objeto real, implementa lógica de controle antes de delegar chamadas ao objeto real.   |
+| **Ambassador**            | Atua como um intermediário especializado para lidar com comunicação externa. | Proxies que implementam autenticação, monitoramento e roteamento para facilitar integrações.                           |
+| **Pipes and Filters**     | Permite o processamento sequencial de dados através de uma cadeia de etapas. | Estrutura modular onde cada componente (filtro) realiza uma transformação nos dados antes de passá-los adiante.        |
+
+
