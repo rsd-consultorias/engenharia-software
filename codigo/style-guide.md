@@ -3,7 +3,6 @@
 ## 1. Organização Geral
 - Utilize **4 espaços para indentação** (não use tabs).
 - O comprimento máximo de linhas deve ser **80-120 caracteres**.
-- Inclua sempre uma **linha em branco** entre métodos.
 
 ## 2. Convenções de Nomeação
 - Classes: **CamelCase** com a primeira letra maiúscula.
