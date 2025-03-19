@@ -1,6 +1,4 @@
-# Checklist de Etapas e Entregáveis: Cascata vs. Ágil
-
-## Processo Cascata/Tradicional
+## Checklist de Etapas e Entregáveis - Cascata/Tradicional
 
 ### 1. Levantamento de Requisitos
 - **Tarefas**:
