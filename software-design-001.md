@@ -158,6 +158,201 @@ Desvantagens:
 | Ambassador          | Integrações externas frequentes e necessidade de isolamento | Moderada/Alta   |
 
 
+## Pipes & Filter
+
+```csharp
+using Confluent.Kafka;
+using Microsoft.AspNetCore.Mvc;
+using Npgsql;
+using System.Text.Json;
+
+namespace PipesAndFilters.Controllers
+{
+    public class Pipeline
+    {
+        public static TOutput Execute<TInput, TOutput>(TInput input, params Func<TInput, TOutput>[] filters)
+        {
+            foreach (var filter in filters)
+            {
+                input = (TInput)(object)filter((TInput)input);
+            }
+            return (TOutput)(object)input;
+        }
+    }
+
+    public class KafkaController : Controller
+    {
+        private const string KafkaTopic = "meu_topico";
+        private const string KafkaServer = "localhost:9092";
+        private const string ConnectionString = "Host=localhost;Username=meuusuario;Password=minhasenha;Database=meubanco";
+
+        public void ProcessEvents()
+        {
+            var config = new ConsumerConfig
+            {
+                BootstrapServers = KafkaServer,
+                GroupId = "consumer-group",
+                AutoOffsetReset = AutoOffsetReset.Earliest
+            };
+
+            using var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
+            consumer.Subscribe(KafkaTopic);
+
+            using var connection = new NpgsqlConnection(ConnectionString);
+            connection.Open();
+
+            while (true)
+            {
+                var result = consumer.Consume();
+                var rawEvent = JsonSerializer.Deserialize<Event>(result.Message.Value);
+
+                // Aplicando o padrão Pipes and Filters
+                Pipeline.Execute(rawEvent,
+                    TransformEvent, // Filtro 1: Transformar
+                    e => SaveToDatabase(e, connection) // Filtro 2: Persistir no banco
+                );
+            }
+        }
+
+        private Event TransformEvent(Event rawEvent)
+        {
+            return new Event
+            {
+                Id = rawEvent.Id,
+                Name = rawEvent.Name.ToUpper(),
+                Timestamp = rawEvent.Timestamp
+            };
+        }
+
+        private Event SaveToDatabase(Event transformedEvent, NpgsqlConnection connection)
+        {
+            using var cmd = new NpgsqlCommand("INSERT INTO events (id, name, timestamp) VALUES (@id, @name, @timestamp)", connection);
+            cmd.Parameters.AddWithValue("id", transformedEvent.Id);
+            cmd.Parameters.AddWithValue("name", transformedEvent.Name);
+            cmd.Parameters.AddWithValue("timestamp", transformedEvent.Timestamp);
+            cmd.ExecuteNonQuery();
+
+            return transformedEvent; // Opcional, para fins de pipeline
+        }
+    }
+
+    public class Event
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime Timestamp { get; set; }
+    }
+}
+```
+
+```java
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Function;
+
+public class KafkaPipeline {
+
+    private static final String TOPIC = "meu_topico";
+    private static final String BOOTSTRAP_SERVERS = "localhost:9092";
+    private static final String DB_URL = "jdbc:postgresql://localhost/meubanco";
+    private static final String DB_USER = "meuusuario";
+    private static final String DB_PASSWORD = "minhasenha";
+
+    public static void main(String[] args) {
+        Properties props = new Properties();
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-group");
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+
+        try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+             Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+
+            consumer.subscribe(Collections.singletonList(TOPIC));
+
+            while (true) {
+                ConsumerRecords<String, String> records = consumer.poll(1000);
+
+                for (ConsumerRecord<String, String> record : records) {
+                    Event rawEvent = parseEvent(record.value());
+
+                    // Aplicando o padrão Pipes and Filters
+                    Event result = applyPipeline(
+                        rawEvent,
+                        KafkaPipeline::transformEvent, // Filtro 1: Transformar
+                        event -> saveToDatabase(event, connection) // Filtro 2: Persistir no banco
+                    );
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Event parseEvent(String json) {
+        // Simulação simples de parsing
+        return new Event(json); // Ajuste para sua lógica de parsing
+    }
+
+    private static Event transformEvent(Event event) {
+        event.setName(event.getName().toUpperCase());
+        return event;
+    }
+
+    private static Event saveToDatabase(Event event, Connection connection) throws Exception {
+        String query = "INSERT INTO events (id, name, timestamp) VALUES (?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, event.getId());
+            stmt.setString(2, event.getName());
+            stmt.setTimestamp(3, new java.sql.Timestamp(event.getTimestamp().getTime()));
+            stmt.executeUpdate();
+        }
+        return event; // Opcional, para fins de pipeline
+    }
+
+    @SafeVarargs
+    private static <T> T applyPipeline(T input, Function<T, T>... filters) {
+        for (Function<T, T> filter : filters) {
+            input = filter.apply(input);
+        }
+        return input;
+    }
+
+    static class Event {
+        private int id;
+        private String name;
+        private java.util.Date timestamp;
+
+        // Getters e setters
+        public int getId() { return id; }
+        public void setId(int id) { this.id = id; }
+
+        public String getName() { return name; }
+        public void setName(String name) { this.name = name; }
+
+        public java.util.Date getTimestamp() { return timestamp; }
+        public void setTimestamp(java.util.Date timestamp) { this.timestamp = timestamp; }
+    }
+}
+```
+
+Explicação do Pattern
+ - Pipeline Centralizado: Ambos os exemplos implementam pipelines, onde cada filtro processa e encaminha os dados para o próximo.
+ - Filtros Reutilizáveis: Transformações e persistência são encapsuladas como filtros.
+ - Flexibilidade: Novos filtros podem ser facilmente adicionados ao pipeline.
+
+----
+
 # Design Patterns - Características Principais
 
 | **Padrão de Design**      | **Descrição**                                                                 | **Características Identificáveis**                                                                                     |
