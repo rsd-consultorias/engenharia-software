@@ -1,6 +1,4 @@
-# Processo de Engenharia de Software
-
-## Etapas do Processo de Engenharia de Software
+## Processo de Engenharia de Software - Cascata/tradicional
 
 ### 1. Planejamento
 - **Definição de Objetivos**: Estabelecer o que o projeto deve alcançar.
