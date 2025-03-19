@@ -523,6 +523,177 @@ public class StateMachineExample {
 }
 ```
 
+## Sobre combinar mais de um pattern em uma classe
+
+**Saga Pattern:**
+ - As etapas (como CapturePaymentStep, CreateSubscriptionStep e ActivateServiceStep) encapsulam a lógica de cada ação como partes do Saga.
+ - A execução do Saga percorre as etapas de forma sequencial.
+
+**State Machine:**
+ - Usamos estados (State) para controlar onde no fluxo estamos e verificar a validade das transições.
+ - Se algo der errado, o estado é atualizado para FAILED.
+
+
+**Vantagens:**
+ - Resiliência: Facilita o rastreamento de falhas e o controle de estados.
+ - Separação de Responsabilidades: Cada etapa é isolada e só cuida da sua lógica específica.
+ - Escalabilidade: Fácil de adicionar novas etapas ou estados, se necessário.
+
+```csharp
+// C#
+using System;
+
+enum State
+{
+    Started,
+    PaymentCaptured,
+    SubscriptionCreated,
+    ServiceActivated,
+    Failed
+}
+
+interface IStep
+{
+    State Execute(State currentState);
+}
+
+class CapturePaymentStep : IStep
+{
+    public State Execute(State currentState)
+    {
+        Console.WriteLine("Capturing payment...");
+        if (currentState == State.Started)
+            return State.PaymentCaptured;
+        else
+            throw new InvalidOperationException("Invalid state for payment capture");
+    }
+}
+
+class CreateSubscriptionStep : IStep
+{
+    public State Execute(State currentState)
+    {
+        Console.WriteLine("Creating subscription...");
+        if (currentState == State.PaymentCaptured)
+            return State.SubscriptionCreated;
+        else
+            throw new InvalidOperationException("Invalid state for subscription creation");
+    }
+}
+
+class ActivateServiceStep : IStep
+{
+    public State Execute(State currentState)
+    {
+        Console.WriteLine("Activating service...");
+        if (currentState == State.SubscriptionCreated)
+            return State.ServiceActivated;
+        else
+            throw new InvalidOperationException("Invalid state for service activation");
+    }
+}
+
+class SagaWithStateMachine
+{
+    static void Main(string[] args)
+    {
+        State state = State.Started;
+        IStep[] steps = {
+            new CapturePaymentStep(),
+            new CreateSubscriptionStep(),
+            new ActivateServiceStep()
+        };
+
+        foreach (var step in steps)
+        {
+            try
+            {
+                state = step.Execute(state);
+                Console.WriteLine($"Current State: {state}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                state = State.Failed;
+                break;
+            }
+        }
+
+        Console.WriteLine($"Final State: {state}");
+    }
+}
+```
+
+```java
+// Java
+enum State {
+    STARTED, PAYMENT_CAPTURED, SUBSCRIPTION_CREATED, SERVICE_ACTIVATED, FAILED
+}
+
+interface Step {
+    State execute(State currentState) throws Exception;
+}
+
+class CapturePaymentStep implements Step {
+    @Override
+    public State execute(State currentState) throws Exception {
+        System.out.println("Capturing payment...");
+        if (currentState == State.STARTED) {
+            return State.PAYMENT_CAPTURED;
+        } else {
+            throw new Exception("Invalid state for payment capture");
+        }
+    }
+}
+
+class CreateSubscriptionStep implements Step {
+    @Override
+    public State execute(State currentState) throws Exception {
+        System.out.println("Creating subscription...");
+        if (currentState == State.PAYMENT_CAPTURED) {
+            return State.SUBSCRIPTION_CREATED;
+        } else {
+            throw new Exception("Invalid state for subscription creation");
+        }
+    }
+}
+
+class ActivateServiceStep implements Step {
+    @Override
+    public State execute(State currentState) throws Exception {
+        System.out.println("Activating service...");
+        if (currentState == State.SUBSCRIPTION_CREATED) {
+            return State.SERVICE_ACTIVATED;
+        } else {
+            throw new Exception("Invalid state for service activation");
+        }
+    }
+}
+
+public class SagaWithStateMachine {
+    public static void main(String[] args) {
+        State state = State.STARTED;
+        Step[] steps = {
+            new CapturePaymentStep(),
+            new CreateSubscriptionStep(),
+            new ActivateServiceStep()
+        };
+
+        for (Step step : steps) {
+            try {
+                state = step.execute(state);
+                System.out.println("Current State: " + state);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+                state = State.FAILED;
+                break;
+            }
+        }
+
+        System.out.println("Final State: " + state);
+    }
+}
+```
 
 ----
 
