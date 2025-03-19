@@ -6,6 +6,7 @@ Este exemplo demonstra como estruturar um *Controller* em ASP.NET Core MVC atuan
 
 ### Controller (Mediator)
 ```csharp
+// C#
 using Microsoft.AspNetCore.Mvc;
 
 public class ProductController : Controller
@@ -39,6 +40,7 @@ public class ProductController : Controller
 
 ### Mediator
 ```csharp
+// C#
 public interface IMediator
 {
     List<Product> FetchAllProducts();
@@ -64,6 +66,7 @@ public class ProductMediator : IMediator
 
 ### Ambassador
 ```csharp
+// C#
 public interface IProductAmbassador
 {
     string SendProducts(List<Product> products);
@@ -81,6 +84,7 @@ public class ProductAmbassador : IProductAmbassador
 
 ### Repository
 ```csharp
+// C#
 public interface IProductRepository
 {
     List<Product> GetAllProducts();
@@ -103,6 +107,7 @@ public class ProductRepository : IProductRepository
 
 ### Model
 ```csharp
+// C#
 public class Product
 {
     public int Id { get; set; }
@@ -161,6 +166,7 @@ Desvantagens:
 ## Pipes & Filter
 
 ```csharp
+// C#
 // salvar em um arquivo PipesFilters.csx
 // para executar abra o terminal e rode o arquivo com o comando "csi PipesFilters.csx"
 
@@ -221,6 +227,7 @@ PipesFilters.Teste();
 ```
 
 ```java
+// Java
 // salvar em um arquivo PipesFilters.java
 // para rodar execute o comando "jshell PipesFilters.java", quando o shell abrir
 // execute "PipesFilters.main(null);"
@@ -287,6 +294,7 @@ Explicação do Pattern
  - Ele permite executar compensações caso uma das etapas falhe, como reverter a criação da assinatura caso a ativação do serviço não seja bem-sucedida.
 
 ```java
+// Java
 public class SagaExample {
     public static void main(String[] args) {
         try {
@@ -318,6 +326,7 @@ class Saga {
 ```
 
 ```csharp
+// C#
 using System;
 using System.Collections.Generic;
 
@@ -365,6 +374,7 @@ class Saga
  - Isso é útil para manter responsabilidades bem separadas, facilitando o teste e a manutenção do código.
 
 ```csharp
+// C#
 interface ICommand
 {
     void Execute();
@@ -413,6 +423,7 @@ class CommandExample
 ```
 
 ```java
+// Java
 interface Command {
     void execute();
 }
@@ -454,6 +465,7 @@ public class CommandExample {
  - Se o processo de captura de cartão e ativação de serviços envolver múltiplos estados (como "captura pendente", "assinatura criada", "serviço ativado"), uma máquina de estados pode ajudar a organizar e controlar essas transições de maneira clara.
 
 ```csharp
+// C#
 enum State
 {
     Captured,
@@ -486,6 +498,7 @@ class StateMachineExample
 ```
 
 ```java
+// Java
 enum State {
     CAPTURED, SUBSCRIBED, ACTIVATED
 }
