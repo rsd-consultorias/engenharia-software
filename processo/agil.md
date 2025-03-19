@@ -1,6 +1,4 @@
-# Processo de Engenharia de Software
-
-## Desenvolvimento Ágil
+## Processo de Engenharia de Software - Ágil
 
 ### 1. Planejamento
 - **Product Backlog**: Lista priorizada de funcionalidades e requisitos.
