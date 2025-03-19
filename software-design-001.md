@@ -1,4 +1,4 @@
-# Exemplos de alguns Desfing Patterns que podem ser úteis no dia a dia
+# Exemplos de alguns Design Patterns que podem ser úteis no dia a dia
 
 ## ASP.NET Core MVC: Controller como Mediator e uso de Ambassador
 
