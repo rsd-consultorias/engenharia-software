@@ -39,6 +39,8 @@
 - **Melhorias**: Adicionar novas funcionalidades e melhorar as existentes.
 - **Monitoramento**: Acompanhar o desempenho do software e garantir que ele continue atendendo às necessidades dos usuários.
 
+----
+
 ## Desenvolvimento Ágil
 
 ### 1. Planejamento
