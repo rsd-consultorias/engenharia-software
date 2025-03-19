@@ -280,6 +280,235 @@ Explicação do Pattern
  - Filtros Reutilizáveis: Transformações e persistência são encapsuladas como filtros.
  - Flexibilidade: Novos filtros podem ser facilmente adicionados ao pipeline.
 
+## Saga, command e state machine
+
+**Saga Pattern (muito usado em arquiteturas de microsserviços):**
+ - Esse padrão é excelente para gerenciar transações distribuídas e processos longos. Cada etapa do fluxo (captura do cartão, criação da assinatura, ativação do serviço, etc.) seria uma transação ou tarefa separada, e o Saga orquestraria ou coreografaria essas etapas.
+ - Ele permite executar compensações caso uma das etapas falhe, como reverter a criação da assinatura caso a ativação do serviço não seja bem-sucedida.
+
+```java
+public class SagaExample {
+    public static void main(String[] args) {
+        try {
+            new Saga()
+                .step(() -> System.out.println("Capturing Credit Card..."))
+                .step(() -> System.out.println("Creating Subscription..."))
+                .step(() -> System.out.println("Activating Service..."))
+                .execute();
+        } catch (Exception e) {
+            System.out.println("Transaction failed. Compensating...");
+        }
+    }
+}
+
+class Saga {
+    private final List<Runnable> steps = new ArrayList<>();
+
+    public Saga step(Runnable step) {
+        steps.add(step);
+        return this;
+    }
+
+    public void execute() {
+        for (Runnable step : steps) {
+            step.run();
+        }
+    }
+}
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+class SagaExample
+{
+    static void Main(string[] args)
+    {
+        try
+        {
+            new Saga()
+                .Step(() => Console.WriteLine("Capturing Credit Card..."))
+                .Step(() => Console.WriteLine("Creating Subscription..."))
+                .Step(() => Console.WriteLine("Activating Service..."))
+                .Execute();
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Transaction failed. Compensating...");
+        }
+    }
+}
+
+class Saga
+{
+    private readonly List<Action> steps = new List<Action>();
+
+    public Saga Step(Action step)
+    {
+        steps.Add(step);
+        return this;
+    }
+
+    public void Execute()
+    {
+        foreach (var step in steps)
+        {
+            step();
+        }
+    }
+}
+```
+
+**Command Pattern:**
+ - Ideal se você precisa encapsular cada etapa do processo como um comando discreto. Por exemplo, você pode ter comandos como CaptureCreditCard, CreateSubscription e ActivateService.
+ - Isso é útil para manter responsabilidades bem separadas, facilitando o teste e a manutenção do código.
+
+```csharp
+interface ICommand
+{
+    void Execute();
+}
+
+class CaptureCreditCard : ICommand
+{
+    public void Execute()
+    {
+        Console.WriteLine("Capturing Credit Card...");
+    }
+}
+
+class CreateSubscription : ICommand
+{
+    public void Execute()
+    {
+        Console.WriteLine("Creating Subscription...");
+    }
+}
+
+class ActivateService : ICommand
+{
+    public void Execute()
+    {
+        Console.WriteLine("Activating Service...");
+    }
+}
+
+class CommandExample
+{
+    static void Main(string[] args)
+    {
+        ICommand[] commands = {
+            new CaptureCreditCard(),
+            new CreateSubscription(),
+            new ActivateService()
+        };
+
+        foreach (var command in commands)
+        {
+            command.Execute();
+        }
+    }
+}
+```
+
+```java
+interface Command {
+    void execute();
+}
+
+class CaptureCreditCard implements Command {
+    public void execute() {
+        System.out.println("Capturing Credit Card...");
+    }
+}
+
+class CreateSubscription implements Command {
+    public void execute() {
+        System.out.println("Creating Subscription...");
+    }
+}
+
+class ActivateService implements Command {
+    public void execute() {
+        System.out.println("Activating Service...");
+    }
+}
+
+public class CommandExample {
+    public static void main(String[] args) {
+        Command[] commands = {
+            new CaptureCreditCard(),
+            new CreateSubscription(),
+            new ActivateService()
+        };
+
+        for (Command command : commands) {
+            command.execute();
+        }
+    }
+}
+```
+
+**State Machine Pattern:**
+ - Se o processo de captura de cartão e ativação de serviços envolver múltiplos estados (como "captura pendente", "assinatura criada", "serviço ativado"), uma máquina de estados pode ajudar a organizar e controlar essas transições de maneira clara.
+
+```csharp
+enum State
+{
+    Captured,
+    Subscribed,
+    Activated
+}
+
+class StateMachineExample
+{
+    static void Main(string[] args)
+    {
+        State state = State.Captured;
+
+        switch (state)
+        {
+            case State.Captured:
+                Console.WriteLine("Credit Card Captured.");
+                state = State.Subscribed;
+                break;
+            case State.Subscribed:
+                Console.WriteLine("Subscription Created.");
+                state = State.Activated;
+                break;
+            case State.Activated:
+                Console.WriteLine("Service Activated.");
+                break;
+        }
+    }
+}
+```
+
+```java
+enum State {
+    CAPTURED, SUBSCRIBED, ACTIVATED
+}
+
+public class StateMachineExample {
+    public static void main(String[] args) {
+        State state = State.CAPTURED;
+
+        switch (state) {
+            case CAPTURED:
+                System.out.println("Credit Card Captured.");
+                state = State.SUBSCRIBED;
+            case SUBSCRIBED:
+                System.out.println("Subscription Created.");
+                state = State.ACTIVATED;
+            case ACTIVATED:
+                System.out.println("Service Activated.");
+        }
+    }
+}
+```
+
+
 ----
 
 # Design Patterns - Características Principais
