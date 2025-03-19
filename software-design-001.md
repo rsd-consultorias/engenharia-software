@@ -162,7 +162,7 @@ Desvantagens:
 
 ```csharp
 // salvar em um arquivo PipesFilters.csx
-// para executar abra o terminal e rode com o arquivo com csi PipesFilters.csx
+// para executar abra o terminal e rode o arquivo com o comando "csi PipesFilters.csx"
 
 using System;
 
