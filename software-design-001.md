@@ -221,6 +221,10 @@ PipesFilters.Teste();
 ```
 
 ```java
+// salvar em um arquivo PipesFilters.java
+// para rodar execute o comando "jshell PipesFilters.java", quando o shell abrir
+// execute "PipesFilters.main(null);"
+
 import java.util.function.Function;
 
 class PipesFilters {
