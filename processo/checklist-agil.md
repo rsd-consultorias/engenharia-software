@@ -1,6 +1,6 @@
 ## Checklist de Etapas e Entregáveis - Processo Ágil
 
-### 1. Planejamento e Iniciação (Sprint 0)
+### 1. Planejamento e Iniciação
 - **Tarefas**:
   - [ ] Identificar stakeholders e prioridades iniciais.
   - [ ] Criar backlog inicial.
