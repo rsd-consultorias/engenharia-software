@@ -12,6 +12,9 @@
  - [Code style guide](codigo/style-guide.md)
  - [Boas práticas de nomenclaturas](codigo/nomenclaturas.md)
 
+#### Java
+ - [Comparação JdbcTemplate x Jpa/Hibernate](codigo/java-acesso-dados.md)
+
 ### Auxiliares
 
  - [User story](user-story.md)
