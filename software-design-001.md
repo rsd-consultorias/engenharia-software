@@ -1,5 +1,9 @@
 # Design Patterns - Características Principais
 
+ - **[S] Structural**
+ - **[B] Behavioral**
+ - **[C] Creational**
+
 | **Padrão de Design**          | **Descrição**                                                                 | **Características Identificáveis**                                                                                     |
 |-------------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | **Singleton [C]**             | Garante uma única instância global de uma classe.                            | Método estático `GetInstance`, construtor privado, variável estática para instância.                                   |
