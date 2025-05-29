@@ -2,7 +2,8 @@
 
  - [Cascata/tradicional](processo/cascata.md)
  - [Ágil](processo/agil.md)
- - [Skunk Works](processo/agil-2.md)
+ - [Ágil - 2](processo/agil-2.md)
+ - [Skunk Works](processo/skunk-works.md)
  - [Arquitetura](processo/arquitetura.md)
 
 ### Design Patterns
