@@ -5,6 +5,7 @@
  - [Ágil - 2](processo/agil-2.md)
  - [Skunk Works](processo/skunk-works.md)
  - [Arquitetura](processo/arquitetura.md)
+ - [Indicadores](processo/indicadores.md)
 
 ### Design Patterns
 
