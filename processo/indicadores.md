@@ -65,7 +65,7 @@ Este documento descreve como medir os processos de engenharia e arquitetura util
 ### 2.1. Conformidade Arquitetural
 - **Definição:** Percentual de componentes implementados conforme o Architecture Design Document (ADD) e os Architectural Decision Records (ADRs).
 - **Como Acompanhar:**  
-  - Revisões periódicas (reuniões da ARB), auditorias e checklists.
+  - Revisões periódicas (reuniões da ARB - Architecture Review Board), auditorias e checklists.
 - **Valores de Referência:**
   - Excelente: Acima de 90%.
   - Bom: Entre 80% e 90%.
