@@ -1,8 +1,8 @@
 ### Processo de Engenharia de Software
 
  - [Cascata/tradicional](processo/cascata.md)
- - [Ágil](processo/agil.md)
- - [Ágil - 2](processo/agil-2.md)
+ - [Ágil](processo/agil-2.md)
+ - [DEVOPS](processo/devops.md)
  - [Skunk Works](processo/skunk-works.md)
  - [Arquitetura](processo/arquitetura.md)
  - [Indicadores](processo/indicadores.md)
