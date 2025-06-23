@@ -267,4 +267,3 @@ Este framework integra desde o planejamento e definição de escopo com a inclus
 - **Agilidade e Iteratividade:** Através da divisão do trabalho em ciclos curtos e feedback constante.
 - **Qualidade e Consistência:** Com ambientes padronizados, pipelines automatizados e processos de testes integrados.
 
-A robusta documentação e as reuniões periódicas (kick-off, daily, sprint review e retrospectivas) garantem que o processo seja escalável e facilmente replicável para novos projetos. Se desejar aprofundar em templates específicos ou metodologias como TDD, code reviews e estratégias de deploy, podemos explorar esses tópicos.
