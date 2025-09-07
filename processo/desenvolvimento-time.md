@@ -51,3 +51,66 @@ Realize conversas individuais com foco em:
 - Sugestões de melhoria
 
 Use perguntas abertas como “O que você gostaria de dominar nos próximos 3 meses?” ou “Quais obstáculos técnicos você enfrenta com frequência?”
+
+## 5. Documentos e Outputs Gerados
+
+| Documento                | Finalidade                                       |
+|--------------------------|--------------------------------------------------|
+| Matriz de Competências   | Visualização dos gaps técnicos                   |
+| Relatório de Diagnóstico | Sumário dos achados e recomendações              |
+| PDIs Individuais         | Planos personalizados de desenvolvimento         |
+| Plano de Ação da Equipe  | Ações coletivas para evolução técnica e cultural |
+
+
+# Etapas para Aplicar o Diagnóstico na Equipe
+
+## 1. Preparação e Alinhamento
+Antes de tudo, comunique à equipe:
+
+- **Objetivo:** deixar claro que o diagnóstico não é uma avaliação de desempenho, mas sim um mapeamento para crescimento.
+- **Formato:** explique que haverá autoavaliação, entrevistas, análise de entregas e feedbacks cruzados.
+- **Confiança:** garanta que os dados serão usados para desenvolvimento, não punição.
+- Faça isso em uma reunião leve, com espaço para perguntas.
+
+## 2. Aplicação da Matriz de Competências
+- Autoavaliar-se de 1 a 5 em cada competência
+- Justificar brevemente cada nota
+- Sugerir áreas que gostaria de desenvolver
+- Você também pode aplicar uma avaliação cruzada (peer review) para enriquecer a visão.
+
+## 3. Entrevistas 1:1
+Realize conversas individuais com foco em:
+- Dores técnicas recorrentes
+- Ambições de carreira
+- Percepção sobre o cliente e os projetos
+- Sugestões de melhoria
+
+Use perguntas como:
+- “O que te impede de entregar com mais fluidez?”
+- “Qual tecnologia você gostaria de dominar nos próximos meses?”
+- “Como você se sente em relação à comunicação com o cliente?”
+
+## 4. Análise de Dados Operacionais
+Use ferramentas como Jira, GitHub/GitLab, SonarQube para extrair:
+- Tempo médio de entrega por tarefa
+- Bugs recorrentes ou retrabalho
+- Cobertura de testes
+- Aderência a padrões de código
+
+Isso traz objetividade ao diagnóstico e ajuda a validar percepções.
+
+## 5. Feedback do Cliente
+Como quase a totalidade do tempo é dedicado ao mesmo cliente, vale colher:
+- Percepção sobre qualidade técnica
+- Comunicação da equipe
+- Pontos fortes e oportunidades de melhoria
+- Pode ser feito via formulário simples ou conversa direta com o PO ou tech lead do cliente.
+
+## 6. Consolidação e Apresentação
+Junte tudo em um relatório de diagnóstico com:
+- Pontos fortes da equipe
+- Gaps técnicos e comportamentais
+- Sugestões de trilhas de desenvolvimento
+- Propostas de ações coletivas e individuais
+
+Apresente isso em uma reunião com a equipe, reforçando que o foco é crescimento e evolução.
