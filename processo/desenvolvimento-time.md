@@ -8,8 +8,8 @@ Crie uma matriz com os principais pilares técnicos exigidos pelo cliente e pela
 
 | **Área técnica** | **Competência Avaliada**                 | **Nível** | **Observações**                                   |
 |------------------|------------------------------------------|-----------|---------------------------------------------------|
-| Backend          | Java, Spring Boot, REST APIs             |           |                                                   |
-| Backend          | C#, .Net Core, REST APIs                 |           |                                                   |
+| Backend java     | Java, Spring Boot, REST APIs             |           |                                                   |
+| Backend .Net     | C#, .Net Core, REST APIs                 |           |                                                   |
 | Frontend         | Typescript, React, Next                  |           |                                                   |
 | DevOps/Cloud     | CI/CD, Docker, Kubernetes, AWS/GCP/Azure |           |                                                   |
 | Testes           | JUnit, Cypress,                          |           |                                                   |
