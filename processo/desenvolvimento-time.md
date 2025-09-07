@@ -33,3 +33,21 @@ Avalie aspectos que impactam a produtividade e a saúde da equipe:
 | Autonomia            | Capacidade de resolver problemas sozinho     | Avaliação do líder       |
 | Proatividade         | Sugestões de melhoria, antecipação de riscos | Histórico de iniciativas |
 | Adaptação ao cliente | Entendimento de contexto e requisitos        | Feedback do cliente      |
+
+## 3. Análise de Entregas e Qualidade
+Avalie a consistência e qualidade das entregas:
+
+- Velocidade de entrega: tempo médio por funcionalidade
+- Taxa de retrabalho: bugs ou refações pós-entrega
+- Cobertura de testes: percentual por projeto
+- Aderência a padrões: uso de guidelines e boas práticas
+
+## 4. Entrevistas Técnicas e 1:1s
+Realize conversas individuais com foco em:
+
+- Dores técnicas e operacionais
+- Ambições de carreira
+- Percepção sobre o cliente e os projetos
+- Sugestões de melhoria
+
+Use perguntas abertas como “O que você gostaria de dominar nos próximos 3 meses?” ou “Quais obstáculos técnicos você enfrenta com frequência?”
