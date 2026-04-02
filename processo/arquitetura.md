@@ -21,7 +21,7 @@ Estabelecer o contexto do projeto, identificar os objetivos do negócio e defini
 - Cenários de uso (e casos de alto nível).
 
 ### Artefatos de Saída
-- **Arquitetura Vision Document:** Visão geral da solução e mapeamento dos requisitos críticos.
+- **Documento de Visão da Arquitetura:** Visão geral da solução e mapeamento dos requisitos críticos.
 - **Lista de Requisitos Iniciais:** Base para a análise de requisitos.
 
 ---
@@ -37,7 +37,7 @@ Aprofundar os requisitos funcionais e não funcionais, identificar restrições 
 - **Stakeholders:** Validam os requisitos coletados, garantindo que as necessidades do negócio estejam refletidas.
 
 ### Artefatos de Entrada
-- Arquitetura Vision Document.
+- Documento de Visão da Arquitetura.
 - Documentos de requisitos iniciais e casos de uso detalhados.
 - Feedback dos stakeholders.
 
@@ -86,7 +86,7 @@ Convertendo a análise em uma solução arquitetural robusta, essa fase abrange 
 - Dados de protótipos preliminares (se existirem) e pesquisas tecnológicas.
 
 ### Artefatos de Saída
-- **Architecture Design Document (ADD):** Documento que inclui:
+- **Documento de Design Arquitetural (ADD):** Documento que inclui:
   - Visão conceitual da arquitetura.
   - Diagramas arquiteturais (block diagrams, diagramas de componentes, diagramas de implantação).
   - Detalhes sobre decisões arquiteturais (Architectural Decision Records – ADRs).
@@ -107,7 +107,7 @@ Assegurar que a arquitetura definida atenda aos requisitos de negócio e não fu
 - **Stakeholders de Negócio:** Contribuem com feedback e validação para garantir alinhamento estratégico.
 
 ### Artefatos de Entrada
-- Architecture Design Document.
+- Documento de Design Arquitetural.
 - Protótipos/Spikes e resultados das simulações.
 - Feedback preliminar dos times de desenvolvimento.
 
@@ -129,7 +129,7 @@ Preparar a passagem da arquitetura para a fase de implementação, constituindo 
 - **Gerente de Projeto:** Garante que a transição ocorra de maneira organizada e dentro dos prazos.
 
 ### Artefatos de Entrada
-- Versão final do Architecture Design Document.
+- Versão final do Documento de Design Arquitetural.
 - Relatório de Revisão da Arquitetura.
 - Diretrizes de padrões e protocolos de integração.
 
@@ -169,7 +169,7 @@ Monitorar a implementação e a operação do sistema para identificar oportunid
 | Preparação e Iniciação        | Patrocinador Executivo, PM, Arquitetos, BAs         | Definir escopo, captar visão do negócio e estabelecer requisitos iniciais.                                  |
 | Coleta e Análise de Requisitos| Business Analysts, Arquitetos, Stakeholders         | Documentar requisitos funcionais e não funcionais, elaborar modelos iniciais e mapear restrições.             |
 | Modelagem do Domínio          | Arquitetos, Desenvolvedores Sêniores                | Criar diagramas de domínio, definir padrões de projeto e compilar guia tecnológico.                          |
-| Design da Arquitetura         | Arquitetos, Líderes Técnicos, DevOps                | Elaborar o Architecture Design Document (ADD) com diagramas, decisões técnicas e planos de integração.       |
+| Design da Arquitetura         | Arquitetos, Líderes Técnicos, DevOps                | Elaborar o Documento de Design Arquitetural (ADD) com diagramas, decisões técnicas e planos de integração.       |
 | Validação e Revisão           | Board de Revisão, Arquitetos, Stakeholders          | Revisar o ADD, validar protótipos, identificar riscos e recomendar ajustes.                                  |
 | Transição para Implementação  | Arquitetos, DevOps, Gerente de Projeto              | Produzir guias de implementação, planos de teste e checklist para assegurar conformidade do design.          |
 | Monitoramento e Evolução      | Arquitetos, DevOps, Gerente de Projeto, Suporte     | Monitorar a operação, coletar feedback, revisar lições aprendidas e atualizar a documentação arquitetural.     |
