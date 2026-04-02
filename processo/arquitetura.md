@@ -215,7 +215,7 @@ Esse processo de arquitetura de software completo permite integrar a visão de n
 ---
 
 
-# Anexo B - Arquitetura Vision Document
+# Anexo B - Documento de Visão da Arquitetura
 
 ## 1. Introdução
 - **Objetivo:** Definir a visão arquitetural alinhada aos objetivos de negócio.
@@ -289,7 +289,7 @@ Esse processo de arquitetura de software completo permite integrar a visão de n
 
 ---
 
-# Anexo F - Arquitetural Design Patterns Document
+# Anexo F - Documento de Padrões Arquiteturais
 
 ## 1. Introdução
 - **Objetivo:** Documentar os padrões de design adotados e justificar suas escolhas.
@@ -328,7 +328,7 @@ Esse processo de arquitetura de software completo permite integrar a visão de n
 
 ---
 
-# Anexo H - Architecture Design Document (ADD)
+# Anexo H - Documento de Design Arquitetural (ADD)
 
 ## 1. Introdução
 - **Objetivo:** Descrever a arquitetura da solução.
@@ -488,7 +488,7 @@ Esse processo de arquitetura de software completo permite integrar a visão de n
 
 ---
 
-# Anexo Q - Atualizações Evolutivas do Architecture Design Document (ADD)
+# Anexo Q - Atualizações Evolutivas do Documento de Design Arquitetural (ADD)
 
 ## 1. Resumo da Atualização
 - **Motivação:** Explicar os motivos para a atualização (novos requisitos, feedback, mudanças tecnológicas).
