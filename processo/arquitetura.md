@@ -13,7 +13,7 @@ Estabelecer o contexto do projeto, identificar os objetivos do negócio e defini
 - **Patrocinador Executivo / CEO:** Aprova a missão e os objetivos estratégicos.
 - **Gerente de Projeto (PM):** Coordena a comunicação entre as partes interessadas e organiza os recursos.
 - **Arquitetos de Software / Líderes Técnicos:** Participam do entendimento inicial dos requisitos e definição do escopo técnico.
-- **Business Analysts:** Coletam e documentam os requisitos de negócio e as necessidades dos usuários.
+- **Analistas de Negócios:** Coletam e documentam os requisitos de negócio e as necessidades dos usuários.
 
 ### Artefatos de Entrada
 - Documento de Visão do Projeto (missão, escopo, objetivos estratégicos).
@@ -32,7 +32,7 @@ Estabelecer o contexto do projeto, identificar os objetivos do negócio e defini
 Aprofundar os requisitos funcionais e não funcionais, identificar restrições técnicas e mapear as demandas do negócio para orientar a modelagem da arquitetura.
 
 ### Papéis e Responsabilidades
-- **Business Analysts:** Conduzem entrevistas e workshops para elucidar os requisitos.
+- **Analistas de Negócios:** Conduzem entrevistas e workshops para elucidar os requisitos.
 - **Arquitetos:** Levantam restrições técnicas e validam a viabilidade das demandas.
 - **Stakeholders:** Validam os requisitos coletados, garantindo que as necessidades do negócio estejam refletidas.
 
@@ -167,7 +167,7 @@ Monitorar a implementação e a operação do sistema para identificar oportunid
 | **Fase**                      | **Papéis**                                          | **Responsabilidades**                                                                                       |
 |-------------------------------|-----------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | Preparação e Iniciação        | Patrocinador Executivo, PM, Arquitetos, BAs         | Definir escopo, captar visão do negócio e estabelecer requisitos iniciais.                                  |
-| Coleta e Análise de Requisitos| Business Analysts, Arquitetos, Stakeholders         | Documentar requisitos funcionais e não funcionais, elaborar modelos iniciais e mapear restrições.             |
+| Coleta e Análise de Requisitos| Analistas de Negócios, Arquitetos, Stakeholders         | Documentar requisitos funcionais e não funcionais, elaborar modelos iniciais e mapear restrições.             |
 | Modelagem do Domínio          | Arquitetos, Desenvolvedores Sêniores                | Criar diagramas de domínio, definir padrões de projeto e compilar guia tecnológico.                          |
 | Design da Arquitetura         | Arquitetos, Líderes Técnicos, DevOps                | Elaborar o Documento de Design Arquitetural (ADD) com diagramas, decisões técnicas e planos de integração.       |
 | Validação e Revisão           | Board de Revisão, Arquitetos, Stakeholders          | Revisar o ADD, validar protótipos, identificar riscos e recomendar ajustes.                                  |
